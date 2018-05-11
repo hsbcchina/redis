@@ -1,0 +1,13 @@
+java.text.SimpleDateFormat
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	 String ok = sdf.format(System.currentTimeMillis());
+	 System.out.println(ok);
+synchronized
+锁标记，互斥锁，互斥锁标记，锁旗标，监视器
+多线程高并发：
+	1没事 ：没有并发错误的情况下就是慢而你没有感觉出来
+	2慢：可以使用线程池减少大量创建和销毁的时间
+	3出错：并发错误，加上锁
+解决死锁：
+	1.可行的话，改变锁标记出现的位置（顺序的排列锁标记，让每个线程依次拿取锁标记）这样会改变逻辑
+	2.使用等待队列 使用Object类的wait() notify() notifyall()三个方法，必须持用锁标记才能调用。wait（）使当前线程A放弃所持有的锁标记，进入等待池内，线程B获得锁标记，再调用notify或notifyall方法释放在等待池中的线程，唤醒A线程，进入锁池等待获得锁标记。
